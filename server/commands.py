@@ -31,3 +31,7 @@ def hrot(percent):
 
 def hext(percent):
     send_command(f'hext{percent}X')
+
+
+def laser():
+    send_command('laserX')

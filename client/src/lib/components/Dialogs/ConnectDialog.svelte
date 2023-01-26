@@ -30,6 +30,15 @@
       reconnectionAttempts: 0,
     });
 
+    socket.on('disconnect', () => {
+      toast.error('Verbindung verloren.', ToastOptions);
+      $isConnected = false;
+      $ipAddress = null;
+      $wsocket = null;
+
+      dialog.show();
+    });
+
     socket.on('connect', () => {
       $wsocket = socket;
       connection_button.disabled = false;
@@ -38,15 +47,6 @@
       dialog.hide();
 
       toast.success('Erfolgreich verbunden!', ToastOptions);
-    });
-
-    socket.on('disconnect', () => {
-      toast.error('Verbindung verloren.', ToastOptions);
-      $isConnected = false;
-      $ipAddress = null;
-      $wsocket = null;
-
-      dialog.show();
     });
 
     socket.on('message', (message) => {

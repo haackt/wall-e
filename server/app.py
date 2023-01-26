@@ -66,6 +66,14 @@ def hext(json):
     logging.info(f'hext{percent}X')
 
 
+@socket.on('laser')
+def laser():
+    commands.laser()
+    logging.info('laserX')
+
+# Speak Controls
+
+
 @socket.on('speak/welcome')
 def speak_welcome():
     logging.info('speak/welcome')

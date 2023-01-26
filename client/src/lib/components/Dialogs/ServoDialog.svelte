@@ -106,6 +106,7 @@
 <style>
   input[type='range'].vertical {
     writing-mode: bt-lr;
+    appearance: slider-vertical;
     -webkit-appearance: slider-vertical;
   }
 </style>

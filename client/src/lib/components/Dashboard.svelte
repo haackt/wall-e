@@ -2,13 +2,18 @@
   import DashboardButton from './Dashboard/DashboardButton.svelte';
   import Joystick from './Dashboard/Joystick.svelte';
   import ServoDialog from './Dialogs/ServoDialog.svelte';
-  import CPUChip from './Icons/cpu-chip.svelte';
-  import Microphone from './Icons/microphone.svelte';
-  import { ipAddress } from '../../stores/websocket';
+  import { socket, ipAddress } from '../../stores/websocket';
   import Cog from './Icons/cog.svelte';
   import Laser from './Icons/laser.svelte';
   import SpeakDialog from './Dialogs/SpeakDialog.svelte';
   import Speaker from './Icons/speaker.svelte';
+  import toast from 'svelte-french-toast';
+
+  function toggleLaser() {
+    $socket?.emit('laser');
+    toast.success(`Laser ${isLaserActive ? 'de' : ''}aktiviert`);
+    isLaserActive = !isLaserActive;
+  }
 
   let servoDialog;
   let speakDialog;
@@ -36,7 +41,7 @@
         </DashboardButton>
       </li>
       <li>
-        <DashboardButton onClick={() => (isLaserActive = !isLaserActive)}>
+        <DashboardButton onClick={() => toggleLaser()}>
           <Laser width="w-5" height="h-5" />
           <span
             >Laser

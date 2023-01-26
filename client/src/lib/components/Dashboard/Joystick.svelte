@@ -187,8 +187,6 @@
         outputMin = -50,
         outputMax = 50;
 
-      console.log(x, y);
-
       // The variables are calculated by normalizing the values using the inputMin and
       // inputMax constants, and then scaling it using the outputMin and outputMax constants.
       let degrees = outputMin + ((outputMax - outputMin) * (x - inputMin)) / (inputMax - inputMin),
