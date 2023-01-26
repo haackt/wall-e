@@ -31,8 +31,8 @@
     </tr>
     <tr>
       <td>Til Sander</td>
-      <td>Gruppe ?</td>
-      <td>?</td>
+      <td>Gruppe Dokumentation</td>
+      <td>Dokumentation</td>
     </tr>
     <tr>
       <td>Danny Muschiol</td>

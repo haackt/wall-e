@@ -14,7 +14,7 @@
 
 <div class="flex flex-col h-full">
   <Header />
-  <main class="flex-1 bg-mb-dark text-gray-300 p-12">
+  <main class="flex-1 bg-mb-dark text-gray-300 p-4 lg:p-12">
     {#if $isConnected}
       <Dashboard />
     {:else}

@@ -36,7 +36,7 @@
 
 <DialogContainer bind:this={dialog}>
   <h1 class="font-serif text-mb-text text-3xl mb-12">Servo-Steuerung</h1>
-  <div class="flex flex-row justify-between items-center">
+  <div class="flex flex-col lg:flex-row justify-between items-center">
     <div class="flex text-center flex-col-reverse gap-2 text-mb-text-muted">
       <label for="">Arm-Links</label>
       <input

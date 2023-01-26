@@ -30,7 +30,7 @@
 <DialogContainer bind:this={dialog}>
   <h1 class="font-serif text-4xl mb-6">Sprechen</h1>
   <div class="flex gap-4 flex-col">
-    <div class="flex justify-between">
+    <div class="flex justify-between flex-col lg:flex-row">
       <SpeakDialogButton onClick={() => play('welcome')}><HandRaised />Begrüßung</SpeakDialogButton>
       <SpeakDialogButton onClick={() => play('follow')}><PaperPlane /> Bitte Folgen</SpeakDialogButton>
       <SpeakDialogButton onClick={() => play('way')}><ArrowsUpDown /> Platz machen</SpeakDialogButton>
@@ -40,7 +40,7 @@
       </SpeakDialogButton>
       <SpeakDialogButton onClick={() => play('bye')}><HandRaised rotate="rotate-12" />Verabschiedung</SpeakDialogButton>
     </div>
-    <div class="flex justify-center gap-16">
+    <div class="flex justify-center lg:gap-16 flex-col lg:flex-row">
       <SpeakDialogButton onClick={() => play('thanks')}>
         <ThumbsUp />
         Dankeschön
