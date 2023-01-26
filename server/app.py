@@ -2,6 +2,7 @@ from flask import Flask
 from flask_socketio import SocketIO, emit
 import logging
 import commands
+import speaker
 
 logging.basicConfig()
 logging.root.setLevel(logging.NOTSET)
@@ -63,6 +64,12 @@ def hext(json):
     percent = json['value']
     commands.hext(percent)
     logging.info(f'hext{percent}X')
+
+
+@socket.on('speak/welcome')
+def speak_welcome():
+    logging.info('speak/welcome')
+    speaker.play_welcome()
 
 
 if __name__ == "__main__":
