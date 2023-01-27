@@ -144,7 +144,7 @@
       type="text"
       placeholder="IP-Adresse"
       id="ip-address"
-      class="h-8 px-2 flex-1 bg-gray-10 outline-none focus:outline-mb-blue font-mono rounded-sm"
+      class="h-8 px-2 flex-1 bg-gray-10 outline-none focus:outline-mb-blue text-mb-darker font-mono rounded-sm"
       disabled={!isConnectedToNetwork}
     />
     <button
