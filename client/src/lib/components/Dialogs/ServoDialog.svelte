@@ -31,7 +31,7 @@
   const DEFAULT_ALPO = 0;
   const DEFAULT_ARPO = 0;
   const DEFAULT_HEXT = 50;
-  const DEFAULT_HROT = 0;
+  const DEFAULT_HROT = 50;
 </script>
 
 <DialogContainer bind:this={dialog}>
