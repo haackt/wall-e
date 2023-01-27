@@ -122,6 +122,12 @@ def speak_thanks():
     speaker.play('slogan')
 
 
+@socket.on('speak/language')
+def speak_thanks():
+    logging.info('speak/language')
+    speaker.play('language')
+
+
 if __name__ == "__main__":
     logging.info('Starting Wall-E-Server on port 1606')
     socket.run(app, host='0.0.0.0', port=1606)
