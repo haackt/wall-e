@@ -1,17 +1,4 @@
-# Wall-E
+# Wall-E Software Dokumentation
 
-## Public
+Das Wall-E Projekt besteht auf der Softwareseite aus mehreren Teilen. Diese sind in der folgenden Tabelle aufgelistet.
 
-- Vercel:
-  - Hosting App
-
-## Raspberry Pi
-
-- Docker:
-  - Python WebSocket Backend to Arduino
-- Motion -> HLS
-
-### Portainer
-
-Username: admin
-Password: 4dm1np0rt41n3r

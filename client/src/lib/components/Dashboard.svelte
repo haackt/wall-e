@@ -26,7 +26,11 @@
 <div class="h-full flex flex-col gap-12 lg:flex-row lg:gap-8">
   <div class="flex-1 flex flex-col gap-2 lg:gap-4">
     <h1 class="font-serif text-white text-3xl">Video</h1>
-    <img src={`http://${$ipAddress}:1507/`} alt="" class="lg:w-[700px] lg:h-[540px] aspect-4/3 bg-black rounded-md" />
+    <img
+      src={`http://${$ipAddress}:1507/`}
+      alt="Wall-E Live Video Feed"
+      class="lg:w-[700px] lg:h-[540px] aspect-4/3 bg-black rounded-md"
+    />
     <ul class="flex flex-nowrap items-center overflow-x-auto text-sm md:text-base gap-4 mt-2 text-mb-text">
       <li>
         <DashboardButton onClick={() => servoDialog.show()}>
