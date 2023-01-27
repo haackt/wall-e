@@ -37,7 +37,7 @@
     <tr>
       <td>Danny Muschiol</td>
       <td>Gruppe 3D-Druck</td>
-      <td>3D Druck, ...?</td>
+      <td>3D Druck, Dokumentation</td>
     </tr>
     <tr>
       <td>Klara Müller</td>
