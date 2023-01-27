@@ -10,7 +10,7 @@
   import toast from 'svelte-french-toast';
 
   function toggleLaser() {
-    $socket?.emit('laser');
+    $socket?.emit('laser', { value: !isLaserActive });
     toast.success(`Laser ${isLaserActive ? 'de' : ''}aktiviert`);
     isLaserActive = !isLaserActive;
   }

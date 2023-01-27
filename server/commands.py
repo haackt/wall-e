@@ -33,5 +33,8 @@ def hext(percent):
     send_command(f'hext{percent}X')
 
 
-def laser():
-    send_command('laserX')
+def laser(state):
+    if state:
+        send_command('lase1X')
+    else:
+        send_command('lase0X')

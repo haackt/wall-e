@@ -67,9 +67,15 @@ def hext(json):
 
 
 @socket.on('laser')
-def laser():
-    commands.laser()
-    logging.info('laserX')
+def laser(json):
+    state = json['value']
+    if state:
+        commands.laser(True)
+        logging.info('lase1X')
+        speaker.play('laser')
+    else:
+        commands.laser(False)
+        logging.info('lase0X')
 
 # Speak Controls
 
@@ -77,7 +83,43 @@ def laser():
 @socket.on('speak/welcome')
 def speak_welcome():
     logging.info('speak/welcome')
-    speaker.play_welcome()
+    speaker.play('welcome')
+
+
+@socket.on('speak/follow')
+def speak_follow():
+    logging.info('speak/follow')
+    speaker.play('follow')
+
+
+@socket.on('speak/way')
+def speak_way():
+    logging.info('speak/way')
+    speaker.play('way')
+
+
+@socket.on('speak/bye')
+def speak_bye():
+    logging.info('speak/bye')
+    speaker.play('bye')
+
+
+@socket.on('speak/thanks')
+def speak_thanks():
+    logging.info('speak/thanks')
+    speaker.play('thanks')
+
+
+@socket.on('speak/story')
+def speak_thanks():
+    logging.info('speak/story')
+    speaker.play('story')
+
+
+@socket.on('speak/slogan')
+def speak_thanks():
+    logging.info('speak/slogan')
+    speaker.play('slogan')
 
 
 if __name__ == "__main__":

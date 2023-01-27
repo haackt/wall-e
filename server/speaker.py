@@ -1,5 +1,5 @@
 from playsound import playsound
 
 
-def play_welcome():
-    playsound('./sounds/welcome.wav')
+def play(filename):
+    playsound(f'./sounds/{filename}.wav')

@@ -10,6 +10,8 @@
   import { socket } from '../../../stores/websocket';
   import toast from 'svelte-french-toast';
   import Star from '../Icons/star.svelte';
+  import Language from '../Icons/language.svelte';
+  import { ToastOptions } from '../../toast';
 
   export function show() {
     dialog.show();
@@ -20,7 +22,10 @@
   }
 
   function play(soundTag: string) {
-    toast.success(`Successfully played ${soundTag}`);
+    toast.success(`Erfolgreich '${soundTag}' abgespielt.`, {
+      style: ToastOptions.style,
+      icon: '🔊',
+    });
     $socket?.emit(`speak/${soundTag}`);
   }
 
@@ -34,10 +39,6 @@
       <SpeakDialogButton onClick={() => play('welcome')}><HandRaised />Begrüßung</SpeakDialogButton>
       <SpeakDialogButton onClick={() => play('follow')}><PaperPlane /> Bitte Folgen</SpeakDialogButton>
       <SpeakDialogButton onClick={() => play('way')}><ArrowsUpDown /> Platz machen</SpeakDialogButton>
-      <SpeakDialogButton onClick={() => play('laser')}>
-        <Laser width="w-5" height="h-5" />
-        Laser
-      </SpeakDialogButton>
       <SpeakDialogButton onClick={() => play('bye')}><HandRaised rotate="rotate-12" />Verabschiedung</SpeakDialogButton>
     </div>
     <div class="flex justify-center lg:gap-16 flex-col lg:flex-row">
@@ -52,6 +53,10 @@
       <SpeakDialogButton onClick={() => play('slogan')}>
         <Star />
         Slogan
+      </SpeakDialogButton>
+      <SpeakDialogButton onClick={() => play('language')}>
+        <Language width="w-5" height="h-5" />
+        Beleidigen
       </SpeakDialogButton>
     </div>
   </div>
