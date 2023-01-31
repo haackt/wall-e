@@ -44,6 +44,8 @@
       $isConnected = true;
       dialog.hide();
 
+      $wsocket.emit('init');
+
       toast.success('Erfolgreich verbunden!', ToastOptions);
     });
 

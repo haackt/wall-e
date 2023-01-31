@@ -45,6 +45,7 @@
         min="0"
         max="100"
         class="vertical"
+        orient="vertical"
         bind:this={arm_left_height}
         on:input={() => {
           $socket?.emit('alpo', { value: arm_left_height.value });
@@ -59,6 +60,7 @@
         min="0"
         max="100"
         class="vertical"
+        orient="vertical"
         bind:this={arm_right_height}
         on:input={() => {
           $socket?.emit('arpo', { value: arm_right_height.value });
@@ -72,8 +74,8 @@
         type="range"
         min="0"
         max="100"
-        step="20"
         class="vertical"
+        orient="vertical"
         bind:this={head_height}
         on:input={() => {
           $socket?.emit('hext', { value: head_height.value });
@@ -93,21 +95,20 @@
         }}
       />
     </div>
-    <div class="flex justify-center items-center align-middle">
-      <button
-        class="border border-mb-darker hover:border-red-500 px-4 py-2 rounded-md hover:text-red-500"
-        on:click={() => resetServos()}
-      >
-        Alle Servos zurücksetzen
-      </button>
-    </div>
+  </div>
+  <div class="flex justify-center items-center align-middle">
+    <button
+      class="border border-mb-darker hover:border-red-500 px-4 py-2 rounded-md hover:text-red-500"
+      on:click={() => resetServos()}
+    >
+      Alle Servos zurücksetzen
+    </button>
   </div>
 </DialogContainer>
 
 <style>
-  input[type='range'].vertical {
+  .vertical {
     writing-mode: bt-lr;
-    appearance: slider-vertical;
     -webkit-appearance: slider-vertical;
   }
 </style>

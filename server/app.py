@@ -33,6 +33,12 @@ def handle_disconnect():
 # Wall-E Controls
 
 
+@socket.on('init')
+def init():
+    commands.init()
+    logging.info('initX')
+
+
 @socket.on('driv')
 def driv(json):
     # Get speed and degrees from json

@@ -18,6 +18,10 @@ def send_command(command):
 # Wall-E Commands
 
 
+def init():
+    send_command('initX')
+
+
 def driv(speed, degrees):
     send_command(f'driv{speed}{degrees}X')
 
