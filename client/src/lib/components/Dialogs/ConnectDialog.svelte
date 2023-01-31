@@ -24,7 +24,7 @@
       icon: '⏳',
     });
 
-    const socket = io(`http://${ip_address.value}:1606/`, {
+    const socket = io(`ws://${ip_address.value}:1606/`, {
       reconnectionAttempts: 0,
     });
 
