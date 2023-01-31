@@ -12,6 +12,7 @@ export default defineConfig({
         short_name: 'Wall-E',
         name: 'Wall-E WebUI',
         description: 'Web-UI for the Wall-E bot',
+        lang: 'de',
         icons: [
           {
             src: '/favicon.svg',
@@ -26,7 +27,7 @@ export default defineConfig({
         ],
         id: 'mb.walle.webui',
         start_url: '/',
-        background_color: '#1f2022',
+        background_color: '#121516',
         display: 'standalone',
         scope: '/',
         theme_color: '#121516',
