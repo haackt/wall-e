@@ -4,10 +4,12 @@ import logging
 import commands
 import speaker
 
+# Logging Setup
 logging.basicConfig()
 logging.root.setLevel(logging.NOTSET)
 logger = logging.getLogger("Wall-E")
 
+# Flask Setup
 app = Flask(__name__)
 socket = SocketIO(app, cors_allowed_origins="*")
 
@@ -16,66 +18,73 @@ socket = SocketIO(app, cors_allowed_origins="*")
 
 @socket.on('connect')
 def handle_connection():
-    if not commands.HAS_SERIAL:
+    if not commands.HAS_SERIAL:  # Check if serial connection is available
+        # If not, send message to client
         emit('message', 'No serial connection')
         return
     logger.info('New connection')
-    emit('message', 'Connected to Wall-E')
+    emit('message', 'Connected to Wall-E')  # If yes, send message to client
 
 
 @socket.on('disconnect')
 def handle_disconnect():
-    logger.info('New disconnect')
+    logger.info('New disconnect')  # Log disconnect
 
 # Wall-E Controls
 
 
 @socket.on('driv')
 def driv(json):
+    # Get speed and degrees from json
     speed = json['speed']
     degrees = json['degrees']
-    commands.driv(speed, degrees)
-    logging.info(f'driv{speed}{degrees}X')
+    commands.driv(speed, degrees)  # Send command to Wall-E
+    logging.info(f'driv{speed}{degrees}X')  # Log command
 
 
 @socket.on('alpo')
 def alpo(json):
+    # Get percent from json
     percent = json['value']
-    commands.alpo(percent)
-    logging.info(f'alpo{percent}X')
+    commands.alpo(percent)  # Send command to Wall-E
+    logging.info(f'alpo{percent}X')  # Log command
 
 
 @socket.on('arpo')
 def arpo(json):
+    # Get percent from json
     percent = json['value']
-    commands.arpo(percent)
-    logging.info(f'arpo{percent}X')
+    commands.arpo(percent)  # Send command to Wall-E
+    logging.info(f'arpo{percent}X')  # Log command
 
 
 @socket.on('hrot')
 def hrot(json):
+    # Get percent from json
     percent = json['value']
-    commands.hrot(percent)
-    logging.info(f'hrot{percent}X')
+    commands.hrot(percent)  # Send command to Wall-E
+    logging.info(f'hrot{percent}X')  # Log command
 
 
 @socket.on('hext')
 def hext(json):
+    # Get percent from json
     percent = json['value']
-    commands.hext(percent)
-    logging.info(f'hext{percent}X')
+    commands.hext(percent)  # Send command to Wall-E
+    logging.info(f'hext{percent}X')  # Log command
 
 
 @socket.on('laser')
 def laser(json):
+    # Get state from json
     state = json['value']
-    if state:
-        commands.laser(True)
-        logging.info('lase1X')
-        speaker.play('laser')
-    else:
-        commands.laser(False)
-        logging.info('lase0X')
+    if state:  # If state is true
+        commands.laser(True)  # Send command to Wall-E
+        logging.info('lase1X')  # Log command
+        speaker.play('laser')  # Play laser sound
+    else:  # If state is false
+        commands.laser(False)  # Send command to Wall-E
+        logging.info('lase0X')  # Log command
 
 # Speak Controls
 
@@ -128,6 +137,7 @@ def speak_thanks():
     speaker.play('language')
 
 
+# If this file is run directly, start the server
 if __name__ == "__main__":
     logging.info('Starting Wall-E-Server on port 1606')
     socket.run(app, host='0.0.0.0', port=1606)

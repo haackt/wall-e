@@ -3,14 +3,19 @@ import serial as arduino
 HAS_SERIAL = True
 
 try:
+    # Create serial connection
     serial = arduino.Serial(port='/dev/ttyACM0', baudrate=9600)
 except:
     HAS_SERIAL = False
     pass
 
+# Function to format and send command to Wall-E
+
 
 def send_command(command):
     return serial.write(bytearray(command.encode('utf-8')))
+
+# Wall-E Commands
 
 
 def driv(speed, degrees):
