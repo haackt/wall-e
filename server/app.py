@@ -11,7 +11,7 @@ logger = logging.getLogger("Wall-E")
 
 # Flask Setup
 app = Flask(__name__)
-socket = SocketIO(app, cors_allowed_origins=None)
+socket = SocketIO(app)
 
 # WebSocket Lifecycle
 
