@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, send_file
 from flask_socketio import SocketIO, emit
 import logging
 import commands
@@ -11,7 +11,12 @@ logger = logging.getLogger("Wall-E")
 
 # Flask Setup
 app = Flask(__name__)
-socket = SocketIO(app)
+socket = SocketIO(app, cors_allowed_origins="*")
+
+
+@app.route('/trust')
+def trust():
+    return send_file('web/trust.html')
 
 # WebSocket Lifecycle
 
