@@ -1,7 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { socket } from '../../../stores/websocket';
-  import MercedesStar from '../../../assets/logo.svg';
 
   let currentSpeed = 0;
   let currentDirection = 0;
@@ -35,7 +34,7 @@
     const handleImage = new Image();
 
     // Set the source of the handle image
-    handleImage.src = MercedesStar;
+    handleImage.src = '/logo.svg';
 
     // Set the width and height of the handle image to upscale it
     handleImage.width = 80;
