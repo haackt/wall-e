@@ -39,7 +39,7 @@
   <div class="flex-1 flex flex-col gap-2 lg:gap-4">
     <h1 class="font-serif text-white text-3xl">Video</h1>
     <img
-      src={`http://${$ipAddress}:1507/`}
+      src={`http://${$ipAddress}:1606/video_feed`}
       alt="Wall-E Live Video Feed"
       class="lg:w-[700px] lg:h-[540px] aspect-4/3 bg-black rounded-md"
     />
