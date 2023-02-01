@@ -3,11 +3,11 @@
   import { socket } from '../../../stores/websocket';
   import { hext } from '../../../stores/servo';
 
-  let dialog;
-  let arm_left_height;
-  let arm_right_height;
-  let head_height;
-  let head_rotation;
+  let dialog: DialogContainer;
+  let arm_left_height: HTMLInputElement;
+  let arm_right_height: HTMLInputElement;
+  let head_height: HTMLInputElement;
+  let head_rotation: HTMLInputElement;
 
   export function show() {
     dialog.show();
