@@ -8,12 +8,24 @@
   import SpeakDialog from './Dialogs/SpeakDialog.svelte';
   import Speaker from './Icons/speaker.svelte';
   import toast from 'svelte-french-toast';
+  import { onMount } from 'svelte';
+  import { ToastOptions } from '../toast';
+  import { hext } from '../../stores/servo';
 
   function toggleLaser() {
     $socket?.emit('laser', { value: !isLaserActive });
-    toast.success(`Laser ${isLaserActive ? 'de' : ''}aktiviert`);
+    if (!isLaserActive) {
+      $socket?.emit('hext', { value: $hext });
+    }
+    toast.success(`Laser ${isLaserActive ? 'de' : ''}aktiviert`, ToastOptions);
     isLaserActive = !isLaserActive;
   }
+
+  onMount(() => {
+    window.addEventListener('gamepadconnected', () => {
+      toast.success('Gamepad verbunden');
+    });
+  });
 
   let servoDialog;
   let speakDialog;

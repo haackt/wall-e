@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import DialogContainer from './DialogContainer.svelte';
   import { socket } from '../../../stores/websocket';
+  import { hext } from '../../../stores/servo';
 
   let dialog;
   let arm_left_height;
@@ -36,7 +36,7 @@
 
 <DialogContainer bind:this={dialog}>
   <h1 class="font-serif text-mb-text text-3xl mb-12">Servo-Steuerung</h1>
-  <div class="flex flex-col lg:flex-row justify-between items-center">
+  <div class="flex flex-col lg:flex-row justify-around items-center">
     <div class="flex text-center flex-col-reverse gap-2 text-mb-text-muted">
       <label for="">Arm-Links</label>
       <input
@@ -78,6 +78,7 @@
         orient="vertical"
         bind:this={head_height}
         on:input={() => {
+          $hext = head_height.value;
           $socket?.emit('hext', { value: head_height.value });
         }}
       />
@@ -96,7 +97,7 @@
       />
     </div>
   </div>
-  <div class="flex justify-center items-center align-middle">
+  <div class="flex justify-center items-center align-middle mt-5">
     <button
       class="border border-mb-darker hover:border-red-500 px-4 py-2 rounded-md hover:text-red-500"
       on:click={() => resetServos()}
