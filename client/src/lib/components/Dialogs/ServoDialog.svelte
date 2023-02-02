@@ -44,7 +44,7 @@
         type="range"
         min="0"
         max="100"
-        class="vertical"
+        class="vertical rotate-180"
         orient="vertical"
         bind:this={arm_left_height}
         on:input={() => {
@@ -90,6 +90,7 @@
         type="range"
         min="0"
         max="100"
+        class="rotate-180"
         bind:this={head_rotation}
         on:input={() => {
           $socket?.emit('hrot', { value: head_rotation.value });
