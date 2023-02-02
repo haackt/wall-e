@@ -8,10 +8,16 @@
   import SpeakDialog from './Dialogs/SpeakDialog.svelte';
   import Speaker from './Icons/speaker.svelte';
   import toast from 'svelte-french-toast';
-  import { onMount } from 'svelte';
   import { ToastOptions } from '../toast';
   import { hext } from '../../stores/servo';
+  import { hasGamepad, useGamepad } from '../../stores/gamepad';
   import 'joypad.js';
+  import SwitchControlMethodButton from './Gamepad/SwitchControlMethodButton.svelte';
+
+  let driveValues = {
+    speed: 0,
+    degrees: 0,
+  };
 
   function toggleLaser() {
     $socket?.emit('laser', { value: !isLaserActive });
@@ -22,7 +28,107 @@
     isLaserActive = !isLaserActive;
   }
 
-  onMount(() => {});
+  const BUTTON_MAP = {
+    0: 'A',
+    1: 'B',
+    2: 'X',
+    3: 'Y',
+    4: 'LB',
+    5: 'RB',
+    6: 'LT',
+    7: 'RT',
+    8: 'BACK',
+    9: 'START',
+    10: 'L3',
+    11: 'R3',
+    12: 'UP',
+    13: 'DOWN',
+    14: 'LEFT',
+    15: 'RIGHT',
+  };
+
+  function driveForward() {
+    driveValues.speed = 50;
+  }
+  function driveBackwards() {
+    driveValues.speed = -50;
+  }
+
+  function setDirection(value) {}
+
+  function moveHead(type, value) {}
+
+  function playSound(soundTag: string) {
+    toast.success(`Erfolgreich '${soundTag}' abgespielt.`, {
+      style: ToastOptions.style,
+      icon: '🔊',
+    });
+    $socket?.emit(`speak/${soundTag}`);
+  }
+
+  //@ts-ignore
+  const joypad = window.joypad;
+
+  joypad.on('connect', () => {
+    $hasGamepad = true;
+    $useGamepad = true;
+  });
+
+  joypad.on('button_press', (e) => {
+    if (!$useGamepad) return;
+
+    const buttonName = BUTTON_MAP[e.detail.index];
+
+    switch (buttonName) {
+      case 'X':
+        toggleLaser();
+        break;
+      case 'RT':
+        driveForward();
+        break;
+      case 'LT':
+        driveBackwards();
+        break;
+      case 'Y':
+        playSound('slogan');
+        break;
+      case 'B':
+        playSound('way');
+        break;
+      case 'A':
+        playSound('story');
+        break;
+      case 'RB':
+        playSound('follow');
+        break;
+      case 'LB':
+        playSound('follow');
+        break;
+      case 'L3':
+        playSound('thanks');
+        break;
+      case 'R3':
+        playSound('language');
+        break;
+      case 'START':
+        playSound('welcome');
+        break;
+    }
+  });
+
+  joypad.on('axis_move', (e) => {
+    const { stickMoved, axisMovementValue, directionOfMovement } = e.detail;
+    if (stickMoved == 'left_stick') {
+      const inputMin = -100,
+        inputMax = 100,
+        outputMin = -49,
+        outputMax = 49;
+      driveValues.degrees =
+        outputMin + ((outputMax - outputMin) * (axisMovementValue * 100 - inputMin)) / (inputMax - inputMin);
+    } else {
+      moveHead(directionOfMovement, axisMovementValue);
+    }
+  });
 
   let servoDialog;
   let speakDialog;
@@ -32,8 +138,8 @@
 <ServoDialog bind:this={servoDialog} />
 <SpeakDialog bind:this={speakDialog} />
 
-<div class="h-full flex flex-col gap-12 lg:flex-row lg:gap-8">
-  <div class="flex-1 flex flex-col justify-center gap-2 lg:gap-4">
+<div class="h-full flex flex-col justify-around gap-12 lg:flex-row lg:gap-8">
+  <div class="flex flex-col justify-center gap-2 lg:gap-4">
     <h1 class="font-serif text-white text-3xl">Video</h1>
     <img
       src={`https://${$ipAddress}:1606/video_feed`}
@@ -68,7 +174,16 @@
       </li>
     </ul>
   </div>
-  <div class="flex flex-1 justify-center items-center">
-    <Joystick />
+  <div class="flex flex-col gap-4 justify-center items-center">
+    {#if !$hasGamepad || !$useGamepad}
+      <div>
+        <Joystick />
+      </div>
+      {#if $hasGamepad}
+        <SwitchControlMethodButton onClick={() => ($useGamepad = true)}>Gamepad benutzen</SwitchControlMethodButton>
+      {/if}
+    {:else if $hasGamepad && $useGamepad}
+      <SwitchControlMethodButton onClick={() => ($useGamepad = false)}>Joystick benutzen</SwitchControlMethodButton>
+    {/if}
   </div>
 </div>

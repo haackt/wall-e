@@ -28,7 +28,7 @@
     $socket?.emit('hrot', { value: head_rotation.value });
   }
 
-  const DEFAULT_ALPO = 0;
+  const DEFAULT_ALPO = 100;
   const DEFAULT_ARPO = 0;
   const DEFAULT_HEXT = 50;
   const DEFAULT_HROT = 50;
