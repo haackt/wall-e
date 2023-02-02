@@ -65,10 +65,10 @@ def init():
 @socket.on('driv')
 def driv(json):
     # Get speed and degrees from json
-    speed = json['speed'].zfill(3)
-    degrees = json['degrees'].zfill(3)
-    commands.driv(speed, degrees)  # Send command to Wall-E
-    logging.info(f'driv{speed}{degrees}X')  # Log command
+    speed = json['speed']
+    degrees = json['degrees']
+    commands.driv(speed.zfill(3), degrees.zfill(3))  # Send command to Wall-E
+    logging.info(f'driv{speed.zfill(3)}{degrees.zfill(3)}X')  # Log command
 
 
 @socket.on('alpo')
