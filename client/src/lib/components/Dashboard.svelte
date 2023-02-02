@@ -11,7 +11,7 @@
   import { onMount } from 'svelte';
   import { ToastOptions } from '../toast';
   import { hext } from '../../stores/servo';
-  import joypad from 'joypad.js';
+  import 'joypad.js';
 
   function toggleLaser() {
     $socket?.emit('laser', { value: !isLaserActive });
@@ -38,7 +38,7 @@
     <img
       src={`http://${$ipAddress}:1606/video_feed`}
       alt="Wall-E Live Video Feed"
-      class="lg:w-[720px] lg:h-[1280px] aspect-16-9 bg-black rounded-md"
+      class="lg:w-[1280px] lg:h-[720px] aspect-16-9 bg-black rounded-md"
     />
     <ul class="flex flex-nowrap items-center overflow-x-auto text-sm md:text-base gap-4 mt-2 text-mb-text">
       <li>
