@@ -83,7 +83,7 @@
           Deine Wall-E Einheit besitzt ein eigenes WLAN-Netzwerk. Bitte verbinde dich mit diesem Netzwerk.
         </p>
         <p class="text-gray-500">
-          Das Netzwerk sollte unter dem Namen <span class="font-bold text-mb-blue">{networkName}</span> erscheinen.
+          Das Netzwerk sollte unter dem Namen <strong class="font-bold text-mb-blue">{networkName}</strong> erscheinen.
         </p>
         <div class="flex flex-row-reverse justify-end gap-2 text-mb-text my-2">
           <label for="is-connected-to-network">Ich habe mich mit dem Netzwerk verbunden.</label>
