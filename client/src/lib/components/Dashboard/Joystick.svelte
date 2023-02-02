@@ -183,8 +183,8 @@
       // and degrees can take. These values are used to scale the normalized joystick position to the desired range.
       const inputMin = 25,
         inputMax = 325,
-        outputMin = -50,
-        outputMax = 50;
+        outputMin = -49,
+        outputMax = 49;
 
       // The variables are calculated by normalizing the values using the inputMin and
       // inputMax constants, and then scaling it using the outputMin and outputMax constants.
@@ -218,8 +218,10 @@
   <canvas width="350px" height="350px" class="bg-mb-darker aspect-square rounded-md" id="joystick" />
   <div class="flex justify-between text-sm">
     <label for="joystick" class="text-mb-text-muted"
-      >Geschwindigkeit: <span class="text-mb-text">{currentSpeed}</span></label
+      >Geschwindigkeit: <span class="text-mb-text">{currentSpeed == 49 ? 50 : currentSpeed}</span></label
     >
-    <label for="joystick" class="text-mb-text-muted">Richtung: <span class="text-mb-text">{currentDirection}</span></label>
+    <label for="joystick" class="text-mb-text-muted"
+      >Richtung: <span class="text-mb-text">{currentDirection == 49 ? 50 : currentDirection}</span></label
+    >
   </div>
 </div>
