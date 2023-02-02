@@ -11,6 +11,7 @@
   import { onMount } from 'svelte';
   import { ToastOptions } from '../toast';
   import { hext } from '../../stores/servo';
+  import joypad from 'joypad.js';
 
   function toggleLaser() {
     $socket?.emit('laser', { value: !isLaserActive });
@@ -21,11 +22,7 @@
     isLaserActive = !isLaserActive;
   }
 
-  onMount(() => {
-    window.addEventListener('gamepadconnected', () => {
-      toast.success('Gamepad verbunden');
-    });
-  });
+  onMount(() => {});
 
   let servoDialog;
   let speakDialog;
@@ -41,7 +38,7 @@
     <img
       src={`http://${$ipAddress}:1606/video_feed`}
       alt="Wall-E Live Video Feed"
-      class="lg:w-[700px] lg:h-[540px] aspect-4/3 bg-black rounded-md"
+      class="lg:w-[720px] lg:h-[1280px] aspect-16-9 bg-black rounded-md"
     />
     <ul class="flex flex-nowrap items-center overflow-x-auto text-sm md:text-base gap-4 mt-2 text-mb-text">
       <li>
