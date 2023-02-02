@@ -38,7 +38,7 @@
     <img
       src={`https://${$ipAddress}:1606/video_feed`}
       alt="Wall-E Live Video Feed"
-      class="lg:w-[1280px] lg:h-[720px] aspect-16-9 bg-black rounded-md"
+      class="aspect-4/3 w-[740px] h-[480px] bg-black rounded-md"
     />
     <ul class="flex flex-nowrap items-center overflow-x-auto text-sm md:text-base gap-4 mt-2 text-mb-text">
       <li>
