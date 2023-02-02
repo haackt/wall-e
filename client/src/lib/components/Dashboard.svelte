@@ -11,13 +11,7 @@
   import { ToastOptions } from '../toast';
   import { hext } from '../../stores/servo';
   import { hasGamepad, useGamepad } from '../../stores/gamepad';
-  import 'joypad.js';
   import SwitchControlMethodButton from './Gamepad/SwitchControlMethodButton.svelte';
-
-  let driveValues = {
-    speed: 0,
-    degrees: 0,
-  };
 
   function toggleLaser() {
     $socket?.emit('laser', { value: !isLaserActive });
@@ -27,6 +21,18 @@
     toast.success(`Laser ${isLaserActive ? 'de' : ''}aktiviert`, ToastOptions);
     isLaserActive = !isLaserActive;
   }
+
+  /**
+   * 
+    🚧 Controller Support - WIP 🚧
+
+   import 'joypad.js';
+
+  let driveValues = {
+    speed: 0,
+    degrees: 0,
+  };
+
 
   const BUTTON_MAP = {
     0: 'A',
@@ -129,7 +135,7 @@
       moveHead(directionOfMovement, axisMovementValue);
     }
   });
-
+*/
   let servoDialog;
   let speakDialog;
   let isLaserActive = false;
