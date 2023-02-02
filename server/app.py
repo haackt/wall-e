@@ -169,4 +169,5 @@ def speak_thanks():
 # If this file is run directly, start the server
 if __name__ == "__main__":
     logging.info('Starting Wall-E-Server on port 1606')
-    socket.run(app, host='0.0.0.0', port=1606, ssl_context='adhoc')
+    socket.run(app, host='0.0.0.0', port=1606,
+               ssl_context='adhoc', allow_unsafe_werkzeug=True)
