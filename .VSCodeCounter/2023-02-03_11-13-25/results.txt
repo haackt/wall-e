@@ -1,0 +1,119 @@
+Date : 2023-02-03 11:13:25
+Directory : /Users/haack/Developer/wall-e
+Total : 61 files,  8133 codes, 65 comments, 362 blanks, all 8560 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| JSON               |          3 |      5,919 |          0 |          3 |      5,922 |
+| Svelte             |         35 |      1,320 |          0 |        164 |      1,484 |
+| C++                |          1 |        185 |         30 |         23 |        238 |
+| pip requirements   |          1 |        183 |          0 |          1 |        184 |
+| Python             |          4 |        170 |         20 |         83 |        273 |
+| HTML               |          2 |        105 |          0 |          5 |        110 |
+| Markdown           |          1 |         93 |          0 |         57 |        150 |
+| TypeScript         |          7 |         55 |          5 |         13 |         73 |
+| JavaScript         |          3 |         43 |          4 |          8 |         55 |
+| XML                |          2 |         29 |          0 |          0 |         29 |
+| PostCSS            |          1 |         17 |          0 |          4 |         21 |
+| JSON with Comments |          1 |         14 |          6 |          1 |         21 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                      | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                         |         61 |      8,133 |         65 |        362 |      8,560 |
+| . (Files)                                                                                                 |          1 |         93 |          0 |         57 |        150 |
+| arduino                                                                                                   |          1 |        185 |         30 |         23 |        238 |
+| client                                                                                                    |         53 |      7,414 |         15 |        194 |      7,623 |
+| client (Files)                                                                                            |          9 |      6,030 |         11 |         15 |      6,056 |
+| client/public                                                                                             |          2 |         29 |          0 |          0 |         29 |
+| client/src                                                                                                |         42 |      1,355 |          4 |        179 |      1,538 |
+| client/src (Files)                                                                                        |          4 |         43 |          3 |         14 |         60 |
+| client/src/lib                                                                                            |         35 |      1,303 |          1 |        159 |      1,463 |
+| client/src/lib (Files)                                                                                    |          1 |          3 |          1 |          1 |          5 |
+| client/src/lib/components                                                                                 |         32 |      1,278 |          0 |        153 |      1,431 |
+| client/src/lib/components (Files)                                                                         |          1 |        177 |          0 |         19 |        196 |
+| client/src/lib/components/Dashboard                                                                       |          2 |        193 |          0 |         46 |        239 |
+| client/src/lib/components/Dialogs                                                                         |          9 |        493 |          0 |         46 |        539 |
+| client/src/lib/components/Dialogs (Files)                                                                 |          6 |        476 |          0 |         41 |        517 |
+| client/src/lib/components/Dialogs/ConnectDialog                                                           |          3 |         17 |          0 |          5 |         22 |
+| client/src/lib/components/Gamepad                                                                         |          1 |         14 |          0 |          3 |         17 |
+| client/src/lib/components/Icons                                                                           |         16 |        323 |          0 |         32 |        355 |
+| client/src/lib/components/Stepper                                                                         |          3 |         78 |          0 |          7 |         85 |
+| client/src/lib/layout                                                                                     |          2 |         22 |          0 |          5 |         27 |
+| client/src/stores                                                                                         |          3 |          9 |          0 |          6 |         15 |
+| server                                                                                                    |          6 |        441 |         20 |         88 |        549 |
+| server (Files)                                                                                            |          5 |        353 |         20 |         84 |        457 |
+| server/web                                                                                                |          1 |         88 |          0 |          4 |         92 |
++-----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                                                  | language           | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| /Users/haack/Developer/wall-e/README.md                                                                   | Markdown           |         93 |          0 |         57 |        150 |
+| /Users/haack/Developer/wall-e/arduino/Wall_E.cpp                                                          | C++                |        185 |         30 |         23 |        238 |
+| /Users/haack/Developer/wall-e/client/index.html                                                           | HTML               |         17 |          0 |          1 |         18 |
+| /Users/haack/Developer/wall-e/client/package-lock.json                                                    | JSON               |      5,877 |          0 |          1 |      5,878 |
+| /Users/haack/Developer/wall-e/client/package.json                                                         | JSON               |         34 |          0 |          1 |         35 |
+| /Users/haack/Developer/wall-e/client/postcss.config.cjs                                                   | JavaScript         |          9 |          2 |          3 |         14 |
+| /Users/haack/Developer/wall-e/client/public/favicon.svg                                                   | XML                |         11 |          0 |          0 |         11 |
+| /Users/haack/Developer/wall-e/client/public/logo.svg                                                      | XML                |         18 |          0 |          0 |         18 |
+| /Users/haack/Developer/wall-e/client/src/App.svelte                                                       | Svelte             |         20 |          0 |          6 |         26 |
+| /Users/haack/Developer/wall-e/client/src/app.postcss                                                      | PostCSS            |         17 |          0 |          4 |         21 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Dashboard.svelte                                  | Svelte             |        177 |          0 |         19 |        196 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Dashboard/DashboardButton.svelte                  | Svelte             |          9 |          0 |          2 |         11 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Dashboard/Joystick.svelte                         | Svelte             |        184 |          0 |         44 |        228 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Dialogs/ConnectDialog.svelte                      | Svelte             |        183 |          0 |         16 |        199 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Dialogs/ConnectDialog/BackButton.svelte           | Svelte             |          6 |          0 |          2 |          8 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Dialogs/ConnectDialog/ConnectStepContainer.svelte | Svelte             |          4 |          0 |          1 |          5 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Dialogs/ConnectDialog/ContinueButton.svelte       | Svelte             |          7 |          0 |          2 |          9 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Dialogs/DialogContainer.svelte                    | Svelte             |         37 |          0 |          5 |         42 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Dialogs/MenuDialog.svelte                         | Svelte             |         80 |          0 |          4 |         84 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Dialogs/ServoDialog.svelte                        | Svelte             |        109 |          0 |          8 |        117 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Dialogs/SpeakDialog.svelte                        | Svelte             |         58 |          0 |          6 |         64 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Dialogs/SpeakDialogButton.svelte                  | Svelte             |          9 |          0 |          2 |         11 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Gamepad/SwitchControlMethodButton.svelte          | Svelte             |         14 |          0 |          3 |         17 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Icons/arrows-up-down.svelte                       | Svelte             |         18 |          0 |          2 |         20 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Icons/bars-3.svelte                               | Svelte             |         14 |          0 |          2 |         16 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Icons/cog.svelte                                  | Svelte             |         53 |          0 |          2 |         55 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Icons/cpu-chip.svelte                             | Svelte             |         18 |          0 |          2 |         20 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Icons/film.svelte                                 | Svelte             |         18 |          0 |          2 |         20 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Icons/finger-print.svelte                         | Svelte             |         18 |          0 |          2 |         20 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Icons/hand-raised.svelte                          | Svelte             |         19 |          0 |          2 |         21 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Icons/language.svelte                             | Svelte             |         18 |          0 |          2 |         20 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Icons/laser.svelte                                | Svelte             |         21 |          0 |          2 |         23 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Icons/microphone.svelte                           | Svelte             |         18 |          0 |          2 |         20 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Icons/paper-plane.svelte                          | Svelte             |         18 |          0 |          2 |         20 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Icons/speaker.svelte                              | Svelte             |         18 |          0 |          2 |         20 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Icons/square-plus.svelte                          | Svelte             |         18 |          0 |          2 |         20 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Icons/star.svelte                                 | Svelte             |         18 |          0 |          2 |         20 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Icons/thumbs-up.svelte                            | Svelte             |         18 |          0 |          2 |         20 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Icons/x-circle.svelte                             | Svelte             |         18 |          0 |          2 |         20 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Stepper/Stepper.svelte                            | Svelte             |         46 |          0 |          3 |         49 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Stepper/StepperIcon.svelte                        | Svelte             |         20 |          0 |          2 |         22 |
+| /Users/haack/Developer/wall-e/client/src/lib/components/Stepper/StepperText.svelte                        | Svelte             |         12 |          0 |          2 |         14 |
+| /Users/haack/Developer/wall-e/client/src/lib/layout/Footer.svelte                                         | Svelte             |          3 |          0 |          1 |          4 |
+| /Users/haack/Developer/wall-e/client/src/lib/layout/Header.svelte                                         | Svelte             |         19 |          0 |          4 |         23 |
+| /Users/haack/Developer/wall-e/client/src/lib/toast.ts                                                     | TypeScript         |          3 |          1 |          1 |          5 |
+| /Users/haack/Developer/wall-e/client/src/main.ts                                                          | TypeScript         |          6 |          1 |          3 |         10 |
+| /Users/haack/Developer/wall-e/client/src/stores/gamepad.ts                                                | TypeScript         |          3 |          0 |          2 |          5 |
+| /Users/haack/Developer/wall-e/client/src/stores/servo.ts                                                  | TypeScript         |          2 |          0 |          2 |          4 |
+| /Users/haack/Developer/wall-e/client/src/stores/websocket.ts                                              | TypeScript         |          4 |          0 |          2 |          6 |
+| /Users/haack/Developer/wall-e/client/src/vite-env.d.ts                                                    | TypeScript         |          0 |          2 |          1 |          3 |
+| /Users/haack/Developer/wall-e/client/svelte.config.js                                                     | JavaScript         |         10 |          2 |          2 |         14 |
+| /Users/haack/Developer/wall-e/client/tailwind.config.cjs                                                  | JavaScript         |         24 |          0 |          3 |         27 |
+| /Users/haack/Developer/wall-e/client/tsconfig.json                                                        | JSON with Comments |         14 |          6 |          1 |         21 |
+| /Users/haack/Developer/wall-e/client/tsconfig.node.json                                                   | JSON               |          8 |          0 |          1 |          9 |
+| /Users/haack/Developer/wall-e/client/vite.config.ts                                                       | TypeScript         |         37 |          1 |          2 |         40 |
+| /Users/haack/Developer/wall-e/server/camera.py                                                            | Python             |         29 |          2 |          7 |         38 |
+| /Users/haack/Developer/wall-e/server/commands.py                                                          | Python             |         26 |          3 |         21 |         50 |
+| /Users/haack/Developer/wall-e/server/requirements.txt                                                     | pip requirements   |        183 |          0 |          1 |        184 |
+| /Users/haack/Developer/wall-e/server/speaker.py                                                           | Python             |          5 |          1 |          5 |         11 |
+| /Users/haack/Developer/wall-e/server/walle_app.py                                                         | Python             |        110 |         14 |         50 |        174 |
+| /Users/haack/Developer/wall-e/server/web/trust.html                                                       | HTML               |         88 |          0 |          4 |         92 |
+| Total                                                                                                     |                    |      8,133 |         65 |        362 |      8,560 |
++-----------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
