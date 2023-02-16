@@ -177,7 +177,7 @@
      * @param {Number} y
      * @returns {Object} { speed: Number, degrees: Number }
      */
-    function translateJoystickposition(input: number, outMin: number, outMax: number): number {
+    function translateJoystickPosition(input: number, outMin: number, outMax: number): number {
       // The inputMin and inputMax constants define the minimum and maximum values that x and y can take,
       // respectively. These values are used to normalize the joystick position.
       // The outputMin and outputMax constants define the minimum and maximum values that the output speed
