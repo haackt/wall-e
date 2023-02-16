@@ -128,8 +128,9 @@
       joystickPosition.y = currentPositon.y;
 
       // Translate the joystick position to a value pair between -50 and 50
-      const { speed, degrees } = translateJoystickposition(joystickPosition.x, joystickPosition.y);
-
+      const speed = translateJoystickPosition(joystickPosition.x, -49, 49);
+      const degrees = translateJoystickPosition(joystickPosition.y, -25, 25);
+      
       // Check if the speed and degrees have changed
       if (speed === lastTranslatedPosition.speed && degrees === lastTranslatedPosition.degrees) {
         return;
@@ -176,26 +177,21 @@
      * @param {Number} y
      * @returns {Object} { speed: Number, degrees: Number }
      */
-    function translateJoystickposition(x: number, y: number): { speed: number; degrees: number } {
+    function translateJoystickposition(input: number; outMin: number, outMax: number): number {
       // The inputMin and inputMax constants define the minimum and maximum values that x and y can take,
       // respectively. These values are used to normalize the joystick position.
       // The outputMin and outputMax constants define the minimum and maximum values that the output speed
       // and degrees can take. These values are used to scale the normalized joystick position to the desired range.
       const inputMin = 25,
         inputMax = 325,
-        outputMin = -49,
-        outputMax = 49;
+        outputMin = outMin,
+        outputMax = outMax;
 
       // The variables are calculated by normalizing the values using the inputMin and
       // inputMax constants, and then scaling it using the outputMin and outputMax constants.
-      let degrees = outputMin + ((outputMax - outputMin) * (x - inputMin)) / (inputMax - inputMin),
-        speed = outputMin + ((outputMax - outputMin) * (y - inputMin)) / (inputMax - inputMin);
+      let output = outputMin + ((outputMax - outputMin) * (input - inputMin)) / (inputMax - inputMin);
 
-      // Round the speed and degrees to the nearest integer
-      speed = Math.round(-speed);
-      degrees = Math.round(degrees);
-
-      return { speed, degrees };
+      return Math.round(output);
     }
 
     // Add event listeners for the start of the drag event
