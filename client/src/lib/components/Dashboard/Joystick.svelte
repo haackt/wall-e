@@ -128,8 +128,8 @@
       joystickPosition.y = currentPositon.y;
 
       // Translate the joystick position to a value pair between -50 and 50
-      const speed = translateJoystickPosition(joystickPosition.x, -49, 49);
-      const degrees = translateJoystickPosition(joystickPosition.y, -25, 25);
+      const speed = translateJoystickPosition(joystickPosition.y, -49, 49);
+      const degrees = translateJoystickPosition(joystickPosition.x, -25, 25);
       
       // Check if the speed and degrees have changed
       if (speed === lastTranslatedPosition.speed && degrees === lastTranslatedPosition.degrees) {
