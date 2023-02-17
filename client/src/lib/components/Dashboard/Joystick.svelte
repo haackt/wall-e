@@ -205,7 +205,7 @@
     setInterval(() => {
       // Send the speed and degrees to the server
       $socket.emit('driv', { speed: currentSpeed, degrees: currentDegree });
-    }, 500);
+    }, 1000);
   });
 </script>
 
