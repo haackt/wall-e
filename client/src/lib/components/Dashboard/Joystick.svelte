@@ -8,7 +8,7 @@
   onMount(() => {
     const canvas = document.getElementById('joystick') as HTMLCanvasElement;
     const context = canvas.getContext('2d') as CanvasRenderingContext2D;
-
+    
     // Variable to store the position of the joystick
     const joystickPosition = {
       x: canvas.width / 2,
@@ -32,7 +32,7 @@
 
     // Create a new image object for the joystick handle
     const handleImage = new Image();
-
+    
     // Set the source of the handle image
     handleImage.src = '/logo.svg';
 
@@ -139,9 +139,6 @@
       currentSpeed = speed;
       currentDirection = degrees;
 
-      // Send the speed and degrees to the server
-      $socket.emit('driv', { speed, degrees });
-
       // Set the last translated position to the current position
       lastTranslatedPosition.speed = speed;
       lastTranslatedPosition.degrees = degrees;
@@ -162,9 +159,6 @@
 
       // Set the cursor to the default cursor
       canvas.style.cursor = 'auto';
-
-      // Send the speed and degrees to the server
-      $socket.emit('driv', { speed: 0, degrees: 0 });
 
       currentSpeed = 0;
       currentDirection = 0;
@@ -207,6 +201,11 @@
     canvas.addEventListener('touchcancel', endDrag);
     canvas.addEventListener('mouseup', endDrag);
     canvas.addEventListener('mouseleave', endDrag);
+    
+    setInterval(() => {
+      // Send the speed and degrees to the server
+      $socket.emit('driv', { speed: currentSpeed, degrees: currentDegree });
+    }, 500);
   });
 </script>
 
