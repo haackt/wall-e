@@ -27,6 +27,9 @@
       icon: '🔊',
     });
     $socket?.emit(`speak/${soundTag}`);
+
+    const audio = new Audio(`https://raw.githubusercontent.com/haackt/wall-e/main/server/sounds/follow.wav${soundTag}.wav`);
+    audio.play();
   }
 
   let dialog;
