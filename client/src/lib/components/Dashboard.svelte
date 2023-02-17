@@ -148,7 +148,7 @@
   <div class="flex flex-col justify-center gap-2 lg:gap-4">
     <h1 class="font-serif text-white text-3xl">Video</h1>
     <img
-      src={`https://${$ipAddress}:1606/video_feed`}
+      src={`https://${$ipAddress}:1507/`}
       alt="Wall-E Live Video Feed"
       class="aspect-4/3 w-[740px] h-[480px] bg-black rounded-md"
     />
