@@ -6,5 +6,5 @@ pygame.mixer.init()
 
 
 def play(filename):
-    pygame.mixer.music.load(f'./sounds/{filename}.wav')
+    pygame.mixer.music.load(f'/home/wall-e/wall-e/server/sounds/{filename}.wav')
     pygame.mixer.music.play()
