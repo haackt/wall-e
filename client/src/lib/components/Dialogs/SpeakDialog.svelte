@@ -28,7 +28,7 @@
     });
     $socket?.emit(`speak/${soundTag}`);
 
-    const audio = new Audio(`https://raw.githubusercontent.com/haackt/wall-e/main/server/sounds/follow.wav${soundTag}.wav`);
+    const audio = new Audio(`https://raw.githubusercontent.com/haackt/wall-e/main/server/sounds/${soundTag}.wav`);
     audio.play();
   }
 
