@@ -4,7 +4,7 @@ HAS_SERIAL = True
 
 try:
     # Create serial connection
-    serial = arduino.Serial(port='/dev/ttyACM0', baudrate=9600)
+    serial = arduino.Serial(port='/dev/ttyACM0', baudrate=9600, writeTimeout=0)
 except:
     HAS_SERIAL = False
     pass
