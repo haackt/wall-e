@@ -36,7 +36,7 @@
   let playLocally = false;
 </script>
 
-<DialogContainer bind:this={dialog} showDialog={true}>
+<DialogContainer bind:this={dialog}>
   <h1 class="font-serif text-4xl mb-6">Sprechen</h1>
   <div class="flex gap-4 flex-col">
     <div class="flex justify-between flex-col lg:flex-row">

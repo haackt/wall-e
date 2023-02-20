@@ -18,8 +18,8 @@
     {#if $isConnected}
       <Dashboard />
     {:else}
-      <Dashboard />
-      <!--<ConnectDialog />-->
+      <!--<Dashboard />-->
+      <ConnectDialog />
     {/if}
   </main>
   <Footer />
