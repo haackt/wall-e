@@ -23,8 +23,8 @@
 
     // Variable to store the last translated position of the joystick
     const lastTranslatedPosition = {
-      speed: 0,
-      degrees: 0,
+      speed: 50,
+      degrees: 50,
     };
 
     // Variable to store, whether the joystick is being dragged
@@ -160,8 +160,8 @@
       // Set the cursor to the default cursor
       canvas.style.cursor = 'auto';
 
-      currentSpeed = 0;
-      currentDirection = 0;
+      currentSpeed = 50;
+      currentDirection = 50;
     }
 
     /**
