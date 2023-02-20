@@ -2,7 +2,6 @@
   import ArrowsUpDown from '../Icons/arrows-up-down.svelte';
   import Film from '../Icons/film.svelte';
   import HandRaised from '../Icons/hand-raised.svelte';
-  import Laser from '../Icons/laser.svelte';
   import PaperPlane from '../Icons/paper-plane.svelte';
   import ThumbsUp from '../Icons/thumbs-up.svelte';
   import DialogContainer from './DialogContainer.svelte';
@@ -10,7 +9,6 @@
   import { socket } from '../../../stores/websocket';
   import toast from 'svelte-french-toast';
   import Star from '../Icons/star.svelte';
-  import Language from '../Icons/language.svelte';
   import { ToastOptions } from '../../toast';
 
   export function show() {
@@ -22,29 +20,32 @@
   }
 
   function play(soundTag: string) {
-    toast.success(`Erfolgreich '${soundTag}' abgespielt.`, {
+    if (playLocally) {
+      const audio = new Audio(`/sounds/${soundTag}.wav`);
+      audio.play();
+    } else {
+      $socket?.emit(`speak/${soundTag}`);
+    }
+    toast.success(`Erfolgreich '${soundTag}' auf ${playLocally ? 'Endgerät' : 'Wall-E'} abgespielt.`, {
       style: ToastOptions.style,
       icon: '🔊',
     });
-    $socket?.emit(`speak/${soundTag}`);
-
-    const audio = new Audio(`https://raw.githubusercontent.com/haackt/wall-e/main/server/sounds/${soundTag}.wav`);
-    audio.play();
   }
 
   let dialog;
+  let playLocally = false;
 </script>
 
-<DialogContainer bind:this={dialog}>
+<DialogContainer bind:this={dialog} showDialog={true}>
   <h1 class="font-serif text-4xl mb-6">Sprechen</h1>
   <div class="flex gap-4 flex-col">
     <div class="flex justify-between flex-col lg:flex-row">
       <SpeakDialogButton onClick={() => play('welcome')}><HandRaised />Begrüßung</SpeakDialogButton>
       <SpeakDialogButton onClick={() => play('follow')}><PaperPlane /> Bitte Folgen</SpeakDialogButton>
       <SpeakDialogButton onClick={() => play('way')}><ArrowsUpDown /> Platz machen</SpeakDialogButton>
-      <SpeakDialogButton onClick={() => play('bye')}><HandRaised rotate="rotate-12" />Verabschiedung</SpeakDialogButton>
+      <!--<SpeakDialogButton onClick={() => play('bye')}><HandRaised rotate="rotate-12" />Verabschiedung</SpeakDialogButton>-->
     </div>
-    <div class="flex justify-center lg:gap-16 flex-col lg:flex-row">
+    <div class="flex justify-between lg:gap-16 flex-col lg:flex-row">
       <SpeakDialogButton onClick={() => play('thanks')}>
         <ThumbsUp />
         Dankeschön
@@ -57,10 +58,23 @@
         <Star />
         Slogan
       </SpeakDialogButton>
-      <SpeakDialogButton onClick={() => play('language')}>
+      <!--<SpeakDialogButton onClick={() => play('language')}>
         <Language width="w-5" height="h-5" />
         Beleidigen
-      </SpeakDialogButton>
+      </SpeakDialogButton>-->
+    </div>
+    <hr class="bg-mb-dark" />
+    <div class="text-mb-text-muted flex items-center gap-2">
+      <input
+        type="button"
+        id="play-locally"
+        class="w-5 h-5 border text-xs text-mb-dark border-slate-800 rounded focus:ring-3 hover:cursor-pointer focus:ring-mb-blue {playLocally
+          ? 'bg-mb-blue'
+          : 'bg-mb-dark'}"
+        on:click={() => (playLocally = !playLocally)}
+        value="✓"
+      />
+      <label for="play-locally" class="hover:cursor-pointer">Audio auf Endgerät wiedergeben</label>
     </div>
   </div>
 </DialogContainer>

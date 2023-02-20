@@ -1,4 +1,4 @@
-<script src="ts">
+<script lang="ts">
   import XCircle from '../Icons/x-circle.svelte';
 
   export let showDialog = false;

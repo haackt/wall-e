@@ -8,7 +8,7 @@ export default defineConfig({
     svelte(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.png', 'favicon.svg', 'logo.svg'],
+      includeAssets: ['favicon.png', 'favicon.svg', 'logo.svg', 'sounds/*.wav'],
       manifest: {
         short_name: 'Wall-E',
         name: 'Wall-E WebUI',
