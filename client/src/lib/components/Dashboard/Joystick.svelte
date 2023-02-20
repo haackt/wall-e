@@ -2,8 +2,8 @@
   import { onMount } from 'svelte';
   import { socket } from '../../../stores/websocket';
 
-  let currentSpeed = 0;
-  let currentDirection = 0;
+  let currentSpeed = 50;
+  let currentDirection = 50;
 
   onMount(() => {
     const canvas = document.getElementById('joystick') as HTMLCanvasElement;
@@ -128,7 +128,7 @@
       joystickPosition.y = currentPositon.y;
 
       // Translate the joystick position to a value pair
-      const speed = 0-translateJoystickPosition(joystickPosition.y, 0, 100);
+      const speed = translateJoystickPosition(joystickPosition.y, 0, 100);
       const degrees = translateJoystickPosition(joystickPosition.x, 0, 100);
       
       // Check if the speed and degrees have changed
