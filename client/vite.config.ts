@@ -4,6 +4,9 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  define: {
+    __COMPILE_TIME__: Date.now()
+  },
   plugins: [
     svelte(),
     VitePWA({
