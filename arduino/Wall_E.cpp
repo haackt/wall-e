@@ -1,5 +1,4 @@
 // COPY OF https://github.com/kiramanaka/GlaDOS/blob/controller/ArduinoMain.cpp
-
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h>
 
@@ -28,7 +27,8 @@ const int B_MOTOR_DIRECTION = 13;
 const int B_MOTOR_VALUE = 11;
 const int B_MOTOR_BRAKE = 8;
 const int B_MOTOR_SENS = A1;
-//const int LASER_PIN = 12;
+const int LASER_PIN = 5;
+const int LASER_POWER_PIN = 4;
 
 const int NECK_BOTTOM_SERVO = 0;
 const int NECK_TOP_SERVO = 1;
@@ -161,49 +161,56 @@ void loop()
 
 void Drive(int speed, int steer)
 {
-    // Set the direction of the motors based on the value of speed
-    // If speed is positive, set the direction of both motors to forward
-    // If speed is negative, set the direction of both motors to reverse
-    if (speed != 0)
-    {
-        digitalWrite(A_MOTOR_DIRECTION, (speed > 0) ? HIGH : LOW);
-        digitalWrite(B_MOTOR_DIRECTION, (speed > 0) ? HIGH : LOW);
-        digitalWrite(A_MOTOR_BRAKE, LOW);
-        digitalWrite(B_MOTOR_BRAKE, LOW);
-    }
-    // Set the speed of the motors based on the sign of steer
-    // If steer is negative, adjust the speed of the motors such that one motor runs faster than the other, causing the vehicle to turn
-    // If steer is positive, adjust the speed of the motors in the opposite way, causing the vehicle to turn in the opposite direction
-    // If steer is zero, set the speed of the motors to the value of speed, causing the vehicle to move forward or backward at a constant speed
-    // Set the speed of the motors based on the value of steer
-    if (steer < 0)
-    {
-        int right = AlwaysPositive(speed) + AlwaysPositive(steer);
-        int left = (AlwaysPositive(speed) + AlwaysPositive(steer))/2;
-        analogWrite(A_MOTOR_VALUE, (right));
-        analogWrite(B_MOTOR_VALUE, left*100);
-    }
-    else if (steer > 0)
-    {
-        int right = (AlwaysPositive(speed) + AlwaysPositive(steer))/2;
-        int left = AlwaysPositive(speed) + AlwaysPositive(steer);
-        analogWrite(A_MOTOR_VALUE, right*100);
-        analogWrite(B_MOTOR_VALUE, (left));
-    }
-    else
-    {
-        int right = AlwaysPositive(speed);
-        int left = AlwaysPositive(speed);
-        // Set the speed of the motors to the value of speed if steer is zero
-        analogWrite(A_MOTOR_VALUE, right*100);
-        analogWrite(B_MOTOR_VALUE, left*100);
-    }
-    // If both speed and steer are zero, set the brakes on the motors to stop the vehicle
-    if (speed == 0 && steer == 0)
-    {
-        digitalWrite(A_MOTOR_BRAKE, HIGH);
-        digitalWrite(B_MOTOR_BRAKE, HIGH);
-    }
+  //A: Rechts, B: Links
+  int brake_a, brake_b;
+
+  // If both speed and steer are zero, set the brakes on the motors to stop the vehicle
+  if (speed == 50 && steer == 50)
+  {
+    digitalWrite(A_MOTOR_BRAKE, HIGH);
+    digitalWrite(B_MOTOR_BRAKE, HIGH);
+    return;
+  }
+  else
+  {
+    digitalWrite(A_MOTOR_BRAKE, LOW);
+    digitalWrite(B_MOTOR_BRAKE, LOW);
+  }
+
+  if (speed > 50)
+  {
+    speed -= 50;
+
+    digitalWrite(A_MOTOR_DIRECTION, HIGH);
+    digitalWrite(B_MOTOR_DIRECTION, HIGH);
+  } 
+  else
+  {
+    speed = 50 - speed;
+
+    digitalWrite(A_MOTOR_DIRECTION, LOW);
+    digitalWrite(B_MOTOR_DIRECTION, LOW);
+  }
+
+  if (steer > 50)
+  {
+    steer -= 50;
+
+    brake_a = GetValueFromRange(0, 150, steer * 2);
+    brake_b = 0;
+  }
+  else 
+  {
+    steer = 50 - steer;
+
+    brake_a = 0;
+    brake_b = GetValueFromRange(0, 150, steer * 2);
+  }
+
+  int speed_value = GetValueFromRange(0, 255, speed * 2);
+
+  analogWrite(A_MOTOR_VALUE, speed_value - brake_a);
+  analogWrite(B_MOTOR_VALUE, speed_value - brake_b);
 }
 
 void RandomEyeMovements()
@@ -247,7 +254,7 @@ void RightArmPosition(int param)
 
 void SetLaser(int param)
 {
-  /*
+  
     if (param == 1)
     {
         digitalWrite(LASER_PIN, HIGH);
@@ -258,7 +265,7 @@ void SetLaser(int param)
     {
         digitalWrite(LASER_PIN, LOW);
         LASER_OFFSET = 0;
-    }*/
+    }
 }
 
 void InitializeMovements()
