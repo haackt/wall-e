@@ -105,10 +105,10 @@
             rel="noreferrer"
             href="https://www.mozilla.org/de/firefox/new/"
             target="_blank"
-            class="text-mb-blue font-serif">Firefox</a
+            class="text-mb-blue font-serif font-bold">Firefox</a
           >
           oder
-          <a rel="noreferrer" href="https://www.apple.com/de/safari/" target="_blank" class="text-mb-blue font-serif"
+          <a rel="noreferrer" href="https://www.apple.com/de/safari/" target="_blank" class="text-mb-blue font-serif font-bold"
             >Safari</a
           > zu wechseln.
         </p>
