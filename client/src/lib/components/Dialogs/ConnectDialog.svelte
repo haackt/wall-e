@@ -63,7 +63,8 @@
   let currentStep = 1;
 
   let isChrome = window.chrome;
-
+  let compileTime = new Date(__COMPILE_TIME__);
+  
   let networkName = 'Wall_E_Klasse_TBA';
   let isConnectedToNetwork = false;
 
@@ -236,4 +237,5 @@
       </div>
     </ConnectStepContainer>
   {/if}
+ <div class="text-sm flex justify-center my-2">Letzte Version: {compileTime.toLocaleString()}</div>
 </DialogContainer>
