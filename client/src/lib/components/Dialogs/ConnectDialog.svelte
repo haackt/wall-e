@@ -62,6 +62,8 @@
   let dialog;
   let currentStep = 1;
 
+  let isChrome = window.chrome;
+
   let networkName = 'Wall_E_Klasse_TBA';
   let isConnectedToNetwork = false;
 
@@ -74,6 +76,45 @@
 </script>
 
 <DialogContainer bind:this={dialog} showDialog={true} showCloseButton={false}>
+  {#if isChrome}
+    <div class="w-full bg-red-500/40 rounded-md px-2 py-4 mb-4">
+      <h1 class="font-serif text-xl font-bold flex items-center gap-2 text-red-50 mb-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
+          />
+        </svg>
+        Hinweis
+      </h1>
+      <div class="flex flex-col gap-2">
+        <p>
+          Um die Web-Benutzeroberfläche optimal nutzen zu können, empfehlen wir die Verwendung von einem Nicht-Chromium
+          basierten Browser.
+        </p>
+        <p>
+          Bitte beziehen Sie in betracht zu <a
+            rel="noreferrer"
+            href="https://www.mozilla.org/de/firefox/new/"
+            target="_blank"
+            class="text-mb-blue font-serif">Firefox</a
+          >
+          oder
+          <a rel="noreferrer" href="https://www.apple.com/de/safari/" target="_blank" class="text-mb-blue font-serif"
+            >Safari</a
+          > zu wechseln.
+        </p>
+      </div>
+    </div>
+  {/if}
   <h1 class="font-serif text-white text-2xl">Verbindung herstellen</h1>
   <Stepper bind:currentStep steps={['Wi-Fi', 'IP-Adresse', 'SSL Zertifikat', 'Fertig']} />
   {#if currentStep == 1}
