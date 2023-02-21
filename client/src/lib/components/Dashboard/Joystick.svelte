@@ -200,7 +200,7 @@
     canvas.addEventListener('touchend', endDrag);
     canvas.addEventListener('touchcancel', endDrag);
     canvas.addEventListener('mouseup', endDrag);
-    canvas.addEventListener('mouseleave', endDrag);
+    //canvas.addEventListener('mouseleave', endDrag);
     
     setInterval(() => {
       // Send the speed and degrees to the server
