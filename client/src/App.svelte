@@ -8,6 +8,8 @@
   import Header from './lib/layout/Header.svelte';
 
   import Dashboard from './lib/components/Dashboard.svelte';
+
+  $isConnected = true;
 </script>
 
 <Toaster />

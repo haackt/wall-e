@@ -10,8 +10,6 @@
   import toast from 'svelte-french-toast';
   import { ToastOptions } from '../toast';
   import { hext } from '../../stores/servo';
-  import { hasGamepad, useGamepad } from '../../stores/gamepad';
-  import SwitchControlMethodButton from './Gamepad/SwitchControlMethodButton.svelte';
 
   function toggleLaser() {
     $socket?.emit('laser', { value: !isLaserActive });
@@ -33,11 +31,7 @@
 <div class="h-full flex flex-col justify-around gap-12 lg:flex-row lg:gap-8">
   <div class="flex flex-col justify-center gap-2 lg:gap-4">
     <h1 class="font-serif text-white text-3xl">Video</h1>
-    <img
-      src={`http://${$ipAddress}:1507/`}
-      alt="Wall-E Live Video Feed"
-      class="aspect-4/3 lg:w-[740px] lg:h-[480px] bg-black rounded-md"
-    />
+    <img src={`http://${$ipAddress}:1507/`} alt="Wall-E Live Video Feed" class="aspect-4/3 m-2 bg-black rounded-md" />
     <ul class="flex flex-nowrap items-center overflow-x-auto text-sm md:text-base gap-4 mt-2 text-mb-text">
       <li>
         <DashboardButton onClick={() => servoDialog.show()}>
@@ -67,15 +61,6 @@
     </ul>
   </div>
   <div class="flex flex-col gap-4 justify-center items-center">
-    {#if !$hasGamepad || !$useGamepad}
-      <div>
-        <Joystick />
-      </div>
-      {#if $hasGamepad}
-        <SwitchControlMethodButton onClick={() => ($useGamepad = true)}>Gamepad benutzen</SwitchControlMethodButton>
-      {/if}
-    {:else if $hasGamepad && $useGamepad}
-      <SwitchControlMethodButton onClick={() => ($useGamepad = false)}>Joystick benutzen</SwitchControlMethodButton>
-    {/if}
+    <Joystick />
   </div>
 </div>

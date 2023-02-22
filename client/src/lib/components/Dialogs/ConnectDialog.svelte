@@ -237,5 +237,5 @@
       </div>
     </ConnectStepContainer>
   {/if}
- <div class="text-sm flex justify-center my-2 text-mb-text-muted">Letzte Version: {compileTime.toLocaleString()}</div>
+ <div class="text-sm flex justify-center my-2 text-mb-text-muted">Version: {compileTime.toLocaleString()}</div>
 </DialogContainer>

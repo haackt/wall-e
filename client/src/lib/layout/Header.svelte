@@ -10,13 +10,13 @@
   <MenuDialog bind:this={menuDialog} />
 {/if}
 
-<header class="bg-mb-darker text-mb-text py-4 px-4 flex justify-between items-center">
+<header class="bg-mb-darker text-mb-text py-2 lg:py-4 px-4 flex justify-between items-center">
   <div>
-    <img src="/logo.svg" class="h-12" alt="Mercedes-Benz Logo" />
+    <img src="/logo.svg" class="h-5 lg:h-12" alt="Mercedes-Benz Logo" />
   </div>
   <div>
     <button class="align-middle hover:text-mb-blue" on:click={() => menuDialog.show()}>
-      <Bars_3 />
+      <Bars_3 width="w-5 lg:w-8" />
     </button>
   </div>
 </header>
