@@ -48,6 +48,7 @@
 
 <style global>
   body.modal-open {
+    width: 100vw;
     overflow: hidden;
     position: fixed;
   }
