@@ -1,7 +1,11 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import toast from 'svelte-french-toast';
-  import { socket as wsocket, isConnected, ipAddress } from '../../../stores/websocket';
+  import {
+    socket as wsocket,
+    isConnected,
+    ipAddress,
+  } from '../../../stores/websocket';
   import io from 'socket.io-client';
   import { ToastOptions } from '../../toast';
   import DialogContainer from './DialogContainer.svelte';
@@ -64,14 +68,16 @@
 
   let isChrome = window.chrome;
   let compileTime = new Date(__COMPILE_TIME__);
-  
+
   let networkName = 'Wall_E_Klasse_TBA';
   let isConnectedToNetwork = false;
 
   let ipAddressValue = '';
   let isValidIPAddress = false;
   $: isValidIPAddress =
-    ipAddressValue.match(/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/) != null;
+    ipAddressValue.match(
+      /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
+    ) != null;
 
   let hasInstalledCertificate = false;
 </script>
@@ -79,7 +85,9 @@
 <DialogContainer bind:this={dialog} showDialog={true} showCloseButton={false}>
   {#if isChrome}
     <div class="w-full bg-red-500/40 rounded-md px-2 py-4 mb-4">
-      <h1 class="font-serif text-xl font-bold flex items-center gap-2 text-red-50 mb-2">
+      <h1
+        class="font-serif text-xl font-bold flex items-center gap-2 text-red-50 mb-2"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -98,8 +106,8 @@
       </h1>
       <div class="flex flex-col gap-2">
         <p>
-          Um die Web-Benutzeroberfläche optimal nutzen zu können, empfehlen wir die Verwendung von einem Nicht-Chromium
-          basierten Browser.
+          Um die Web-Benutzeroberfläche optimal nutzen zu können, empfehlen wir
+          die Verwendung von einem Nicht-Chromium basierten Browser.
         </p>
         <p>
           Bitte beziehen Sie in betracht zu <a
@@ -109,38 +117,60 @@
             class="text-mb-blue font-serif font-bold">Firefox</a
           >
           oder
-          <a rel="noreferrer" href="https://www.apple.com/de/safari/" target="_blank" class="text-mb-blue font-serif font-bold"
-            >Safari</a
+          <a
+            rel="noreferrer"
+            href="https://www.apple.com/de/safari/"
+            target="_blank"
+            class="text-mb-blue font-serif font-bold">Safari</a
           > zu wechseln.
         </p>
       </div>
     </div>
   {/if}
   <h1 class="font-serif text-white text-2xl">Verbindung herstellen</h1>
-  <Stepper bind:currentStep steps={['Wi-Fi', 'IP-Adresse', 'SSL Zertifikat', 'Fertig']} />
+  <Stepper
+    bind:currentStep
+    steps={['Wi-Fi', 'IP-Adresse', 'SSL Zertifikat', 'Fertig']}
+  />
   {#if currentStep == 1}
     <ConnectStepContainer>
       <div slot="content">
         <p class="text-gray-500">
-          Deine Wall-E Einheit besitzt ein eigenes WLAN-Netzwerk. Bitte verbinde dich mit diesem Netzwerk.
+          Deine Wall-E Einheit besitzt ein eigenes WLAN-Netzwerk. Bitte verbinde
+          dich mit diesem Netzwerk.
         </p>
         <p class="text-gray-500">
-          Das Netzwerk sollte unter dem Namen <strong class="font-bold text-mb-blue">{networkName}</strong> erscheinen.
+          Das Netzwerk sollte unter dem Namen <strong
+            class="font-bold text-mb-blue">{networkName}</strong
+          > erscheinen.
         </p>
-        <div class="flex flex-row-reverse justify-end gap-2 text-mb-text my-2">
-          <label for="is-connected-to-network">Ich habe mich mit dem Netzwerk verbunden.</label>
-          <input type="checkbox" id="is-connected-to-network" bind:checked={isConnectedToNetwork} />
+        <div
+          class="flex flex-row-reverse justify-end gap-2 text-mb-text my-2 items-center"
+        >
+          <label for="is-connected-to-network"
+            >Ich habe mich mit dem Netzwerk verbunden.</label
+          >
+          <input
+            type="checkbox"
+            id="is-connected-to-network"
+            bind:checked={isConnectedToNetwork}
+          />
         </div>
       </div>
       <div slot="action" class="flex justify-between">
         <div>&nbsp;</div>
-        <ContinueButton onClick={() => currentStep++} disabled={!isConnectedToNetwork} />
+        <ContinueButton
+          onClick={() => currentStep++}
+          disabled={!isConnectedToNetwork}
+        />
       </div>
     </ConnectStepContainer>
   {:else if currentStep == 2}
     <ConnectStepContainer>
       <div slot="content" class="flex flex-col gap-2">
-        <p class="text-mb-text-muted">Um den Wall-E steuern zu können, musst du seine IP-Adresse angeben.</p>
+        <p class="text-mb-text-muted">
+          Um den Wall-E steuern zu können, musst du seine IP-Adresse angeben.
+        </p>
         <input
           type="text"
           placeholder="IP-Adresse"
@@ -151,7 +181,9 @@
             : 'focus:outline-mb-blue'}  text-mb-darker font-mono rounded-sm"
         />
         {#if !isValidIPAddress}
-          <label for="ip-address" class="text-red-500"> Das ist keine gültige IP-Adresse. </label>
+          <label for="ip-address" class="text-red-500">
+            Das ist keine gültige IP-Adresse.
+          </label>
         {/if}
       </div>
       <div slot="action" class="flex justify-between">
@@ -171,12 +203,19 @@
   {:else if currentStep == 3}
     <ConnectStepContainer>
       <div slot="content" class="text-mb-text-muted">
-        <p>Um eine sichere Verbindung herzustellen, musst du das SSL Zertifikat auf deinem Gerät installieren.</p>
+        <p>
+          Um eine sichere Verbindung herzustellen, musst du das SSL Zertifikat
+          auf deinem Gerät installieren.
+        </p>
         <p>Öffne dazu die folgende URL in deinem Browser:</p>
         <p class="font-mono my-2 text-mb-blue">
           &rarr; <button
             on:click={() => {
-              const popup = window.open(`https://${ipAddressValue}:1606/trust`, '_blank', 'width=600,height=600');
+              const popup = window.open(
+                `https://${ipAddressValue}:1606/trust`,
+                '_blank',
+                'width=600,height=600'
+              );
               window.addEventListener('message', (event) => {
                 if (event.data == 'wall-e-cert-success') {
                   popup.close();
@@ -187,12 +226,18 @@
           >
         </p>
         <p>
-          Folge anschließend den Anweisungen auf dem Bildschirm. Wenn du fertig bist, kannst du mit dem nächsten Schritt
-          fortfahren.
+          Folge anschließend den Anweisungen auf dem Bildschirm. Wenn du fertig
+          bist, kannst du mit dem nächsten Schritt fortfahren.
         </p>
         <div class="flex flex-row-reverse justify-end gap-2 text-mb-text mt-4">
-          <label for="is-connected-to-network">Ich habe das SSL-Zertifikat installiert.</label>
-          <input type="checkbox" id="is-connected-to-network" bind:checked={hasInstalledCertificate} />
+          <label for="is-connected-to-network"
+            >Ich habe das SSL-Zertifikat installiert.</label
+          >
+          <input
+            type="checkbox"
+            id="is-connected-to-network"
+            bind:checked={hasInstalledCertificate}
+          />
         </div>
       </div>
       <div slot="action" class="flex justify-between">
@@ -218,7 +263,8 @@
           }}>&rarr; Verbinden</button
         >
         <p>
-          Sollten Probleme auftreten, kannst du den Prozess jederzeit erneut starten. Dazu klickst du auf den Button unten.
+          Sollten Probleme auftreten, kannst du den Prozess jederzeit erneut
+          starten. Dazu klickst du auf den Button unten.
         </p>
         <button
           class="bg-red-500 px-4 py-2  rounded-sm text-mb-text my-3"
@@ -237,5 +283,7 @@
       </div>
     </ConnectStepContainer>
   {/if}
- <div class="text-sm flex justify-center my-2 text-mb-text-muted">Version: {compileTime.toLocaleString()}</div>
+  <div class="text-sm flex justify-center my-2 text-mb-text-muted">
+    Version: {compileTime.toLocaleString()}
+  </div>
 </DialogContainer>
