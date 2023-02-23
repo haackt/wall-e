@@ -32,7 +32,7 @@
 {#if showDialog}
   <div class="fixed w-screen h-screen backdrop-blur-sm top-0 left-0 flex justify-center items-center">
     <div
-      class="bg-mb-dark m-4 w-full max-w-4xl lg:max-w-4xl max-h-screen px-4 py-4 relative drop-shadow-lg rounded-lg text-mb-text overflow-y-auto"
+      class="bg-mb-darker m-4 w-full max-w-4xl lg:max-w-4xl max-h-screen px-4 py-4 relative drop-shadow-lg rounded-lg text-mb-text overflow-y-auto"
     >
       <header class="width-full absolute right-4">
         {#if showCloseButton}
